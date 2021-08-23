@@ -1,0 +1,5 @@
+{
+    "scripts": {
+      "build": "postcss css/tailwind.css -o ../snipcartwagtaildemo/static/css/tailwind-output.css"
+    }
+  }

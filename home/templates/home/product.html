@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+
+{% block content %}
+
+
+
+    <div class="min-h-screen flex justify-left items-left">
+        <div class="container flex justify-left">
+          <div class="max-w-lg py-4 px-16">
+            <div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
+                {% image page.image max-400x400 as temp_image %}
+              <img class="rounded-t-lg" src="{{ temp_image.url }}" alt="" />
+              <div class="py-6 px-8 rounded-lg bg-white">
+                <h1 class="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{{ page.title }}</h1>
+                <p class="text-gray-700 tracking-wide">{{page.short_description}}</p>
+                <p>
+                    {% for f in custom_fields %}
+                        {% if f.options_array|length > 0 %}
+                            <div class="form-group">
+                                <label class="form-label" for="{{ f.name|lower }}">
+                                    {{ f.name }}:
+                                </label>
+                                <select class="form-select custom-field-select" id="{{ f.name|lower }}" data-field="{{ forloop.counter }}">
+                                    {% for opt in f.options_array %}
+                                        <option>
+                                            {{ opt }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <button class="snipcart-add-item btn btn-primary mt-6 py-2 px-4 bg-yellow-400 text-gray-800 font-bold rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                data-item-name="{{ page.title }}"
+                    data-item-id="{{ page.sku }}"
+                    data-item-url="{{ page.get_full_url }}"
+                    data-item-price="{{ page.price }}"
+                    data-item-description="{{ page.short_description}}"
+                    data-item-image="{{ temp_image.url }}"
+                    {% for f in custom_fields %}
+                        data-item-custom{{forloop.counter}}-name="{{f.name}}"
+                        data-item-custom{{forloop.counter}}-options="{{f.options}}"
+                    {% endfor %}>Add to cart</button>
+                    
+              </div>
+              <div class="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
+                <span class="text-md">{{page.price}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.custom-field-select').onchange = function(event) {
+            if (event.target.dataset.field) {
+                document.querySelector('.snipcart-add-item')
+                    .dataset['itemCustom' + event.target.dataset.field + 'Value'] = event.target.value;
+            }
+        };
+    },false);
+</script>
+{% endblock %}
