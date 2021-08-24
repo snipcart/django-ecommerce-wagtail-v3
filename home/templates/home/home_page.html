@@ -3,34 +3,54 @@
 
 {% block content %}
 
-    <div class="bg-white">
-        
-        <div class="justify-center items-center object-center max-w-2xl mx-auto py-8 px-4 sm:py-8 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h1 class="inset-x-0 top-2 text-center text-4xl font-normal tracking-tight text-gray-900 object-center">The Shopping Cart Shop</h1>
-      
-          <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 content-center item-center object-center">
-            {% for product in products %}
-            <div class="group relative">
-              <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                {% image product.image fill-800x1000 as tmp_image %}
-                <img src="{{ tmp_image.url }}" alt="" class="img-responsive">
-              </div>
-              <div class="mt-4 flex justify-between">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="{{ product.get_url }}">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      {{ product.title }}
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">{{ product.description }}</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
-              </div>
-            </div>
-            {% endfor %}
-            <!-- More products... -->
+<div class="relative bg-local bg-cover bg-center h-screen"
+  style="background-image: url(media/original_images/CartCoverLudo-Charles.jpg)">
+
+  <div
+    class="justify-center max-w-2xl mx-auto py-8 px-4 sm:py-8 sm:px-6 lg:px-8">
+    <h1 class="absolute bottom-80 inset-x-0 text-center text-6xl font-normal tracking-tight text-white">
+      The Shopping Cart Shop</h1>
+    {% if request.path == '/' %}
+    <div class="absolute bottom-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <a href="/shop">
+        <button class="bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 rounded">
+          Shop Now
+        </button>
+      </a>
+    </div>
+    {% endif %}
+    <div
+      class="justify-items-center mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
+      {% for product in products %}
+      <div class="group relative">
+        <div
+          class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none">
+          {% image product.image fill-800x1000 as tmp_image %}
+          <img src="{{ tmp_image.url }}" alt="" class="img-responsive object-contain w-full h-full">
+        </div>
+        <div class="mt-4 flex justify-between">
+          <div>
+            <h3 class="text-sm text-gray-700 font-bold">
+
+              <span aria-hidden="true" class="absolute inset-0"></span>
+              {{ product.title }}
+              
+            </h3>
+            <p class="mt-1 text-sm text-gray-800">{{ product.description }}</p>
           </div>
+          <p class="text-sm font-medium text-gray-900">{{ product.price }}$</p>
+        </div>
+        <div class="group-hover:bg-opacity-75 relative left-1/2 transform -translate-x-1/2 -translate-y-1/2 pt-14">
+          <a href="{{ product.get_url }}">
+            <button class="bg-black hover:bg-gray-800 text-white py-2 px-4 rounded">
+              More Details
+            </button>
+          </a>
         </div>
       </div>
+      {% endfor %}
+      <!-- More products... -->
+    </div>
+  </div>
+</div>
 {% endblock %}
