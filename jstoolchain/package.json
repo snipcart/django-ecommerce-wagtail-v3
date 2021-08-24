@@ -1,5 +1,10 @@
 {
     "scripts": {
-      "build": "postcss css/tailwind.css -o ../snipcartwagtaildemo/static/css/tailwind-output.css"
+        "build": "postcss css/tailwind.css -o ../snipcartwagtaildemo/static/css/tailwind-output.css"
+    },
+    "dependencies": {
+        "autoprefixer": "^10.3.2",
+        "postcss-cli": "^8.3.1",
+        "tailwindcss": "^2.2.7"
     }
-  }
+}
