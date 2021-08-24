@@ -38,7 +38,7 @@
 <body class="{% block body_class %}{% endblock %}">
     {% wagtailuserbar %}
 
-    <nav class="bg-gray-800">
+    <nav class="bg-white">
         <div class="max-w-7xl mx-auto px-2 sm:px-2 lg:px-2">
           <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -69,28 +69,28 @@
                 </svg>
               </button>
             </div>
-            <div class="absolute inset-y-0 right-0 flex items-center pl-2 sm:static sm:inset-auto sm:mr-6 sm:pr-0">
+            <div class="absolute inset-y-0 right-0 flex items-center pl-0 sm:static sm:inset-auto sm:ml-6 sm:pl-0">
               <div class="hidden sm:block sm:ml-6">
                 <div class="flex space-x-4">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="/" class="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium object-left items-left">Products</a>
+                  <a href="/shop" class="hover:bg-gray-200 text-black underline px-3 py-2 rounded-md text-sm font-medium object-left items-left">Shop</a>
                 </div>
               </div>
             </div>
             <div class="flex-1 flex object-center items-center justify-center sm:items-stretch sm:justify-center px-4">
               <div class="hidden sm:block sm:ml-6">
                 <div class="flex-shrink-0 flex object-center items-center">
-                  <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
-                  <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow">
+                  <a href="/"><img class="block lg:hidden h-8 w-auto" src="/media/original_images/The Shopping Cart Shop nobg Small.svg" alt="the shopping cart shop"></a>
+                  <a href="/"><img class="hidden lg:block h-8 w-auto" src="/media/original_images/The Shopping Cart Shop nobg.svg" alt="the shopping cart shop"></a>
                 </div>
               </div>
             </div>
-            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div class="absolute inset-y-0 right-0 flex items-center pr-0 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
       
               <!-- Profile dropdown -->
               <div class="ml-3 relative">
                 <div>
-                    <a href="" class="hover:bg-gray-700 btn btn-primary snipcart-checkout text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <a href="" class="hover:bg-gray-200 underline btn btn-primary snipcart-checkout text-black px-3 py-2 rounded-md text-sm font-medium">
                         <i class="icon icon-apps"></i>
                         View cart 🛒 (<span class="snipcart-total-items">0</span>)
                     </a>
@@ -112,7 +112,7 @@
         </div>
       </nav>
 
-    <div class="container grid-lg">
+    <div class="">
         {% block content %}{% endblock %}
     </div>
 
