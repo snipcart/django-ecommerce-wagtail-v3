@@ -1,1 +1,1 @@
-web: gunicorn snipcartwagtaildemo.wsgi
+web: gunicorn snipcartwagtaildemo.wsgi:application --log-file -
